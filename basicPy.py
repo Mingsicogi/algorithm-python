@@ -281,3 +281,51 @@ for i in range(0, 10):
 ##########################################################################################################################################
 
 
+# function
+def add(a, b):
+    return a + b
+
+print('--------------------------------------')
+print(add(1, 5))
+
+
+print('--------------------------------------')
+a = 1
+b = 2
+
+print(add(a, b))
+print(add(b = 7, a = 5))
+
+c = 10
+def subtract(a):
+    # global c
+    return a - c
+
+print('--------------------------------------')
+print(subtract(5))
+
+# 여러개의 리턴값 반환 함수
+def multipleReturn():
+    return 1, 2, 3, 4
+
+print('--------------------------------------')
+a,b,c,d = multipleReturn()
+print(a,b,c,d)
+
+# lambda
+fun = lambda a, b: a + b
+
+print('--------------------------------------')
+print((lambda a, b: a + b)(3,4))
+print(fun(3,4))
+
+array = [('홍길동', 50), ('이순신', 32), ('아무개', 74)]
+def my_key(element):
+    return element[1]
+print(sorted(array, key=my_key))
+print(sorted(array, key=lambda x: x[1]))
+
+list1 = [1,2,3,4,5]
+list2 = [6,7,8,9,10]
+
+print(list(map(lambda a, b: a + b, list1, list2)))
