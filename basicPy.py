@@ -1,6 +1,17 @@
 
 import sys
 
+from itertools import permutations
+from itertools import product
+
+from itertools import combinations
+from itertools import combinations_with_replacement
+
+from collections import Counter
+
+import math
+
+
 a=1000
 print(a)
 
@@ -44,10 +55,10 @@ array = [[0] * m for _ in range(n)]
 print(array)
 
 # under score(_) : 파이썬에서는 반복을 수행하되 반복을 위한 변수의 값을 무시하고자 할때 자주 사용함
-sum = 0
+sum_all = 0
 for i in range(10) :
-    sum += i
-print(sum)
+    sum_all += i
+print(sum_all)
 
 for _ in range(10) :
     print("hello world~!")
@@ -329,3 +340,59 @@ list1 = [1,2,3,4,5]
 list2 = [6,7,8,9,10]
 
 print(list(map(lambda a, b: a + b, list1, list2)))
+
+# 실전에서 유용한 표준 라이브러리
+# 내장 함수
+sum_result = sum([1,2,3,4,5])
+print(sum_result)
+
+min_result = min(7,3,2,1)
+max_result = max(3,4,6,72)
+print(min_result, max_result)
+
+result = eval("(3+5)*7")
+print(result)
+
+# sort
+result = sorted([5,672,22,4,26,1,6,7,3,45])
+reverse_result = sorted([5,672,22,4,26,1,6,7,3,45], reverse=True)
+print(result, reverse_result)
+
+# sort with key
+array = [('홍길동', 35), ('이순신', 75), ('아무개', 50)]
+result = sorted(array, key=lambda x: x[1], reverse=True)
+print(result)
+
+# itertools(순열 조합 라이브러리)
+# permutation
+data = ['a', 'b', 'c']
+result = list(permutations(data, 3))
+print(result)
+
+# combination
+result = list(combinations(data, 2))
+print(result)
+
+# duplication permutation
+result = list(product(data, repeat=3))
+print(result)
+
+# duplication combination
+result = list(combinations_with_replacement(data, r=2))
+print(result)
+
+# heapq(힙 자료구조 제공)
+
+# bisect (이진탐색)
+
+# collections
+counter = Counter([1,2,3,3,1,21,3,2,1,1,2,3,3,4,5])
+print(counter[1]) # counter에 1의 총 갯수
+print(dict(counter))
+
+# math
+def lcm(a, b):
+    return a * b // math.gcd(a, b)
+
+print(math.gcd(2, 3))
+print(lcm(2, 3))
