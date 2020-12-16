@@ -39,6 +39,3 @@ for move in moves:
         y = result[2]
 
 print(x, y)
-
-
-# 시각
