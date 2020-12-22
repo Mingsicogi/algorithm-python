@@ -108,35 +108,34 @@ bfs(graph, 1, visited)
 print('\n')
 
 
-# 음료수 얼려 먹기
-n, m = map(int, input().split())
-graph = []
-for i in range(n):
-    graph.append(list(map(int, input())))
+# 음료수 얼려 먹기 - connected component
+n, m = map(int, input().split()) # N x M 입력을 받기 위함.
+graph = [] 
+for i in range(n): # n 행 만큼
+    graph.append(list(map(int, input()))) # 공백없이 받은 값을 정수형 배열로 append
 print(graph)
 
 def dfs_2(x, y):
-    if x < 0 or x >= n or y < 0 or y >= m:
+    if x < 0 or x >= n or y < 0 or y >= m: # N x M 을 벗어나면 false 
         return False
     
     if graph[x][y] == 0:
-        graph[x][y] = 1
+        graph[x][y] = 1 # 0인 지점은 방문 처리를 하고,
 
-        print("left", x,y, dfs_2(x - 1, y))
-        print("right", x,y, dfs_2(x + 1, y))
-        print("down", x,y, dfs_2(x, y - 1))
-        print("up", x,y, dfs_2(x, y + 1))
+        # 방문한 지점 상하좌우로 방문
+        dfs_2(x - 1, y) 
+        dfs_2(x + 1, y)
+        dfs_2(x, y - 1)
+        dfs_2(x, y + 1)
 
-        return True
+        return True # 주변에 추가적으로 0인 지점이 있어도, 하나로 처리됨.
 
     return False
 
 result = 0
 for i in range(n):
     for j in range(m):
-        result = dfs_2(i, j)
-        print(i, ', ', j, result)
-        if result == True:
+        if dfs_2(i, j):
             result += 1
 
 print(result)
