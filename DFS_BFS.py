@@ -1,3 +1,5 @@
+from collections import deque
+
 # basic algorithm for DFS_BFS
 
 ### stack
@@ -139,3 +141,39 @@ for i in range(n):
             result += 1
 
 print(result)
+
+
+# 미로 탈출 -> BFS 간선의 비용이 모두 같을때 최소 비용을 구하기 위해 사용할 수 있음
+n, m = map(int, input().split())
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input())))
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def dfs_3(x, y):
+    queue = deque()
+    queue.append((x, y))
+
+    while queue:
+        print(queue)
+        x, y = queue.popleft()
+        for i in range(4):
+            xn = x + dx[i]
+            yn = y + dy[i]
+
+            if xn < 0 or xn >= m or yn < 0 or yn >= n:
+                continue
+
+            if graph[xn][yn] == 0:
+                continue
+
+            if graph[xn][yn] == 1:
+                graph[xn][yn] = graph[x][y] + 1
+                queue.append((xn, yn))
+
+    return graph[n - 1][m - 1]
+
+
+print(dfs_3(0,0))
