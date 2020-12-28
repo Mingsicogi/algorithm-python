@@ -12,6 +12,8 @@ import pickle
 randomDay = int(randint(4, 28))
 print('오프라인 스터디 모임 날짜는 매월 ' + str(randomDay) + '일로 선정되었습니다.')
 
+
+# pickle
 profile_file = open("profile.pickle", "wb")
 profile = {"이름" : "박명수", "나이" : 30, "취미" : ["축구", "골프", "코딩"]}
 print(profile)
@@ -23,3 +25,14 @@ print('----------------- File Save ----------------')
 profile_file = open("profile.pickle", "rb")
 profileFromFile = pickle.load(profile_file)
 print(profileFromFile)
+
+
+# with file open (매번 클로즈 할 필요가 없음)
+with open("profile.pickle", "rb") as profile_file:
+    print(pickle.load(profile_file))
+
+with open("study.txt", "w", encoding="utf-8") as study_file:
+    study_file.write("파이썬 꿀잼!")
+
+with open("study.txt", "r") as study_file:
+    print(study_file.read())
