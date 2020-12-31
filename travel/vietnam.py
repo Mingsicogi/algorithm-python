@@ -2,6 +2,7 @@ class VietnamPackage:
     def detail(self):
         print("베트남 여향")
 
+print(__name__)
 
 if __name__ == "__main__":
     print("직접 import되서 사용됩니다.")
